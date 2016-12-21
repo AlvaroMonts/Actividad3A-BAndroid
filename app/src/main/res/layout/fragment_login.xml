@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.alvaro.myapplication.LoginFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Iniciar Sesión"
+        android:textSize="18sp"
+        android:fontFamily="monospace"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:textSize="18sp"
+        android:layout_marginTop="30dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_marginTop="40dp"
+        android:id="@+id/editTextUsername" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textSize="18sp"
+        android:layout_marginTop="80dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text|textWebPassword"
+        android:ems="10"
+        android:layout_marginTop="100dp"
+        android:id="@+id/editTextPassword" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:text="LOGIN"
+        android:id="@+id/btnLogin"
+        android:layout_below="@+id/editTextPassword"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REGISTRO"
+        android:id="@+id/btnRegistro"
+        android:layout_marginBottom="29dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/btnLogin"
+        android:layout_alignStart="@+id/btnLogin" />
+
+
+</RelativeLayout>
