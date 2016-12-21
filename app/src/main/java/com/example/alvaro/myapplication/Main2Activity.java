@@ -11,10 +11,8 @@ import com.example.quickbloxlibreria.QBAdmin;
 import java.util.Locale;
 
 public class Main2Activity extends AppCompatActivity {
-
     Main2ActivityController controlador;
     QBAdmin qbAdmin;
-
     Button btnEspanol;
     Button btnIngles;
     TextView text1;

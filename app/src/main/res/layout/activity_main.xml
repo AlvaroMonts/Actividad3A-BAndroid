@@ -20,7 +20,7 @@
     <fragment
         android:layout_height="400dp"
         android:name="com.example.alvaro.myapplication.LoginFragment"
-        android:id="@+id/miFragmento"
+        android:id="@+id/fragmentLogin"
         android:layout_width="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"

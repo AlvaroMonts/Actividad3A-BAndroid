@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-
 import com.example.quickbloxlibreria.QBAdmin;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -16,7 +15,6 @@ import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 public class MainActivity extends AppCompatActivity {
-
     LoginFragment loginFragment;
     RegistroFragment registroFragment;
     CreditoFragment creditoFragment;
@@ -30,10 +28,9 @@ public class MainActivity extends AppCompatActivity {
     EditText EditUsuario;
     EditText EditPassw;
     EditText usuarioReg;
-    EditText emailReg;
     EditText passwReg;
-
     QBAdmin qbAdmin;
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -44,12 +41,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         fm = getSupportFragmentManager();
-
-
         controlador = new MainActivityController(this);
-        loginFragment = (LoginFragment) fm.findFragmentById(R.id.miFragmento);
+        loginFragment = (LoginFragment) fm.findFragmentById(R.id.fragmentLogin);
         registroFragment = (RegistroFragment) fm.findFragmentById(R.id.fragmentRegistro);
         creditoFragment = (CreditoFragment) fm.findFragmentById(R.id.fragmentCredito);
 
@@ -63,20 +57,16 @@ public class MainActivity extends AppCompatActivity {
         botonIniciaSesionRegistro.setOnClickListener(controlador);
         botonRegistrarse.setOnClickListener(controlador);
 
-
         EditUsuario = (EditText) loginFragment.getView().findViewById(R.id.editTextUsername);
         EditPassw = (EditText) loginFragment.getView().findViewById(R.id.editTextPassword);
 
         usuarioReg = (EditText) registroFragment.getView().findViewById(R.id.editTextUsuarioR);
-        emailReg = (EditText) registroFragment.getView().findViewById(R.id.editTextEmailR);
         passwReg = (EditText) registroFragment.getView().findViewById(R.id.editTextPasswR);
-
 
         qbAdmin = new QBAdmin(controlador, this);
         qbAdmin.startSesion();
 
         cambiaFragment(1);
-
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();

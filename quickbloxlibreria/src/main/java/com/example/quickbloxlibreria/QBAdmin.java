@@ -33,7 +33,6 @@ public class QBAdmin {
         String AUTH_KEY = "Oe732e2AuUmOema";
         String AUTH_SECRET = "DDa5778gV3eBszm";
         String ACCOUNT_KEY = "RMmAJBwgNwZZ1ArnNfig";
-//
         QBSettings.getInstance().init(activity, APP_ID, AUTH_KEY, AUTH_SECRET);
         QBSettings.getInstance().setAccountKey(ACCOUNT_KEY);
     }
@@ -56,8 +55,8 @@ public class QBAdmin {
 
 
 
-    public void registrarse(String usuario, String password, String email){
-        QBUser user = new QBUser(usuario, email, password);
+    public void registrarse(String usuario, String password){
+        QBUser user = new QBUser(usuario, password);
         QBUsers.signUp(user, new QBEntityCallback<QBUser>() {
             @Override
             public void onSuccess(QBUser user, Bundle args) {
@@ -90,27 +89,18 @@ public class QBAdmin {
 
     }
 
-    public void selectTabla (int idIdioma){
-
-
+    public void selectTabla (String id){
         QBRequestGetBuilder requestBuilder = new QBRequestGetBuilder();
-        requestBuilder.eq("idi", idIdioma);
+        requestBuilder.eq("idioma", id);
 
         QBCustomObjects.getObjects("idiomas", requestBuilder, new QBEntityCallback<ArrayList<QBCustomObject>>() {
             @Override
             public void onSuccess(ArrayList<QBCustomObject> customObjects, Bundle params) {
-
                 HashMap <Integer, String> palabras = new HashMap<Integer, String>();
-
-
                 for (int i = 0; i < customObjects.size(); i++){
-
-                    palabras.put((Integer)customObjects.get(i).getFields().get("idp"),customObjects.get(i).getFields().get("valor").toString());
-
+                    palabras.put((Integer)customObjects.get(i).getFields().get("idpalabra"),customObjects.get(i).getFields().get("valor").toString());
                 }
-
                 listener.datosDescargados(palabras);
-
             }
 
             @Override
@@ -119,66 +109,4 @@ public class QBAdmin {
             }
         });
     }
-
-
-    public void selectTema (String tema){
-
-
-        QBRequestGetBuilder requestBuilder = new QBRequestGetBuilder();
-        requestBuilder.eq("tema", tema);
-
-        QBCustomObjects.getObjects("noticias", requestBuilder, new QBEntityCallback<ArrayList<QBCustomObject>>() {
-            @Override
-            public void onSuccess(ArrayList<QBCustomObject> customObjects, Bundle params) {
-
-                HashMap <Integer, String> palabras = new HashMap<Integer, String>();
-
-
-                for (int i = 0; i < customObjects.size(); i++){
-
-                    palabras.put(i, customObjects.get(i).getFields().get("texto").toString());
-
-                }
-
-                listener.datosDescargados(palabras);
-
-            }
-
-            @Override
-            public void onError(QBResponseException errors) {
-
-            }
-        });
-    }
-
-
-
-    public void selectNoticia (String noticia){
-
-
-        QBRequestGetBuilder requestBuilder = new QBRequestGetBuilder();
-        requestBuilder.eq("texto", noticia);
-
-        QBCustomObjects.getObjects("noticias", requestBuilder, new QBEntityCallback<ArrayList<QBCustomObject>>() {
-            @Override
-            public void onSuccess(ArrayList<QBCustomObject> customObjects, Bundle params) {
-
-                HashMap <Integer, String> palabras = new HashMap<Integer, String>();
-
-
-                for (int i = 0; i < customObjects.size(); i++){
-
-                    palabras.put(i, customObjects.get(i).getFields().get("noticia").toString());
-
-                }
-
-                listener.datosDescargados(palabras);
-
-            }
-
-            @Override
-            public void onError(QBResponseException errors) {
-
-            }
-        });
 }

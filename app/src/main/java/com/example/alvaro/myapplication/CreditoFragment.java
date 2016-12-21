@@ -1,6 +1,7 @@
 package com.example.alvaro.myapplication;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -66,7 +67,7 @@ public class CreditoFragment extends Fragment {
         };
 
         t = new Timer();
-        t.schedule(tm, 1000, 500);
+        t.schedule(tm, 5000, 10000);
 
         return  v;
     }

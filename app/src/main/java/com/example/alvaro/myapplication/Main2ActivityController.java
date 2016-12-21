@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.example.libreria.QBAdminListener;
 import com.example.quickbloxlibreria.QBAdminListener;
 import com.quickblox.core.Consts;
 import com.quickblox.core.QBEntityCallback;
@@ -25,26 +24,21 @@ import java.util.HashMap;
 public class Main2ActivityController implements View.OnClickListener, QBAdminListener {
 
     Main2Activity vista;
-    int idIdioma;
+    String id;
 
     public Main2ActivityController(Main2Activity vista){
         this.vista = vista;
-
     }
-
 
     @Override
     public void onClick(View v) {
 
         if (v.getId() == vista.btnEspanol.getId()){
-            idIdioma = 1;
-            System.out.println("Español");
-            vista.qbAdmin.selectTabla(idIdioma);
-
+            id = "esp";
+            vista.qbAdmin.selectTabla(id);
         }else if (v.getId() == vista.btnIngles.getId()){
-            idIdioma = 2;
-            System.out.println("Inglés");
-            vista.qbAdmin.selectTabla(idIdioma);
+            id = "eng";
+            vista.qbAdmin.selectTabla(id);
         }
 
     }
@@ -64,9 +58,13 @@ public class Main2ActivityController implements View.OnClickListener, QBAdminLis
 
         vista.text1.setText(datos.get(1).toString());
         vista.text2.setText(datos.get(2).toString());
-        vista.btnEspanol.setText(datos.get(3).toString());
-        vista.btnIngles.setText(datos.get(4).toString());
-
+        if(id.equals("esp")) {
+            vista.btnEspanol.setText("Espanol");
+            vista.btnIngles.setText("Ingles");
+        } else {
+            vista.btnEspanol.setText("Spanish");
+            vista.btnIngles.setText("English");
+        }
     }
 
 }
